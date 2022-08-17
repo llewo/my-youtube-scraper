@@ -34,7 +34,7 @@
                             {
                                 "label": "Headline",
                                 "format": "text",
-                                "field": "headline"
+                                "field": "SimplifiedResultheadline"
                             },
                             {
                                 "label": "Title",
