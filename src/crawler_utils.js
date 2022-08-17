@@ -332,7 +332,7 @@ const getBasicInformation = async (basicInfoParams) => {
                             const videoUrl = await video.$eval(simplifiedResultVideoTitle, (el) => el.href);
                             const duration = await video.$eval(simplifiedResultDurationText, (el) => el.innerText);
                             const channelName = await video.$eval(simplifiedResultChannelName, (el) => el.innerText);
-                            const channelUrl = await video.$eval(simlifiedResultChannelUrl, (el) => el.href);
+                            const channelUrl = await video.$eval(simplifiedResultChannelUrl, (el) => el.href);
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
