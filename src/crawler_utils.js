@@ -53,10 +53,10 @@ exports.handleMaster = async ({ page, requestQueue, searchKeywords, maxResults, 
     const searchOrUrl = search || request.url;
 
     log.debug(`[${searchOrUrl}]: waiting for first video to load...`);
-    const { youtubeVideosSection, youtubeVideosHeadline, youtubeVideosRenderer } = CONSTS.SELECTORS.SEARCH;
+    const { youtubeVideosSection, youtubeVideosRenderer } = CONSTS.SELECTORS.SEARCH;
     // static wait to ensure the page is loaded, networkidle2 sometimes not working?
     await page.waitForTimeout(CONSTS.DELAY.START_LOADING_MORE_VIDEOS);
-    const queuedVideos = await page.$$(`${youtubeVideosSection} ${youtubeVideosHeadline} ${youtubeVideosRenderer}`);
+    const queuedVideos = await page.$$(`${youtubeVideosSection} ${youtubeVideosRenderer}`);
 
     // prepare to infinite scroll manually
     // puppeteer.infiniteScroll(page) is currently buggy
@@ -167,6 +167,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
     log.debug(`got videoDuration as ${durationStr}`);
 
     const commentsText = await page.$eval('#comments #contents', (el) => el.textContent);
+    console.log(`comments: ${commentsText}`);
     const commentsTurnedOff = commentsText?.trim().startsWith('Comments are turned off');
     log.debug(`searching for comments Count at ${commentsSlctr}`);
 
@@ -192,7 +193,6 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
     }
 
     await extendOutputFunction({
-        headline,
         title,
         id: videoId,
         url: request.url,
@@ -225,8 +225,8 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 
 const getBasicInformation = async (basicInfoParams) => {
     const { page, maxRequested, isSearchResultPage, input, requestUrl } = basicInfoParams;
-    const { youtubeVideosSection, youtubeVideosHeadline, youtubeVideosRenderer, url, videoTitle, headline, channelNameText, subscriberCount, canonicalUrl, simplifiedResultHeadline, 
-        simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
+    const { youtubeVideosSection, youtubeVideosRenderer, url, videoTitle, channelNameText, subscriberCount, canonicalUrl,
+        simlifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
     } = CONSTS.SELECTORS.SEARCH;
 
     const extendOutputFunction = await utils.extendFunction({
@@ -280,45 +280,28 @@ const getBasicInformation = async (basicInfoParams) => {
                     } catch (e) {}
 
                     if (channelUrl) {
-                        const headline = await video.$eval(simplifiedResultHeadline);
                         const videoUrl = await video.$eval(url, (el) => el.href);
                         const videoId = utils.getVideoId(videoUrl);
                         title = await video.$eval(videoTitle, (el) => el.title);
                         const videoDetails = await video.$eval(videoTitle, (el) => el.ariaLabel) || '';
 
                         const videoDetailsArray = videoDetails.replace(title, ``).replace(`by ${channelName}`, ``).split(' ').filter((item) => item);
-                        let simplifiedDate = videoDetailsArray.slice(0, 3).join(' ');
+                        const simplifiedDate = videoDetailsArray.slice(0, 3).join(' ');
                         const viewCount = +videoDetailsArray[videoDetailsArray.length - 2].replace(/\D/g, '');
-                        let durationRaw = videoDetailsArray.slice(3, videoDetailsArray.length - 2).join(' ');
+                        const durationRaw = videoDetailsArray.slice(3, videoDetailsArray.length - 2).join(' ');
 
                         let duration;
-                        let isError = false;
 
                         try {
                             duration = await video.$eval(`span[aria-label="${durationRaw}"]`, (el) => el.innerText);
                         } catch (e) {
                             console.log(`Couldn't parse duration, sending the raw duration`);
-                            isError = true;
-                        }
-
-
-                        // second attempt to get the duration from the alternative version
-                        if (isError) {
-                            try {
-                                console.log(`Trying to parse alternative duration`);
-                                durationRaw = videoDetailsArray.slice(2, videoDetailsArray.length - 2).join(' ');
-                                simplifiedDate = videoDetailsArray.slice(2, 5).join(' ');
-                                duration = await video.$eval(`span[aria-label="${durationRaw}"]`, (el) => el.innerText);
-                            } catch (e) {
-                                console.log(`Couldn't parse duration, sending the raw duration`);
-                                duration = durationRaw;
-                            }
+                            duration = durationRaw;
                         }
 
                         videoAmount++;
 
                         await extendOutputFunction({
-                            headline,
                             title,
                             id: videoId,
                             url: videoUrl,
@@ -331,12 +314,11 @@ const getBasicInformation = async (basicInfoParams) => {
                         });
                     } else {
                         try {
-                            headline = await video.$eval(simplifiedResultHeadline);
                             title = await video.$eval(simplifiedResultVideoTitle, (el) => el.innerText);
                             const videoUrl = await video.$eval(simplifiedResultVideoTitle, (el) => el.href);
                             const duration = await video.$eval(simplifiedResultDurationText, (el) => el.innerText);
                             const channelName = await video.$eval(simplifiedResultChannelName, (el) => el.innerText);
-                            const channelUrl = await video.$eval(simplifiedResultChannelUrl, (el) => el.href);
+                            const channelUrl = await video.$eval(simlifiedResultChannelUrl, (el) => el.href);
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
@@ -344,7 +326,6 @@ const getBasicInformation = async (basicInfoParams) => {
                             videoAmount++;
 
                             await extendOutputFunction({
-                                headline,
                                 title,
                                 id: videoUrl.split('v=')[1],
                                 url: videoUrl,
@@ -394,3 +375,4 @@ const getBasicInformation = async (basicInfoParams) => {
     }
     clearInterval(logInterval);
 };
+
