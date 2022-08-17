@@ -317,7 +317,6 @@ const getBasicInformation = async (basicInfoParams) => {
                         videoAmount++;
 
                         await extendOutputFunction({
-                            headline,
                             title,
                             id: videoId,
                             url: videoUrl,
@@ -338,12 +337,10 @@ const getBasicInformation = async (basicInfoParams) => {
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
-                            const headline = await video.$eval(simplifiedResultHeadline);
 
                             videoAmount++;
 
                             await extendOutputFunction({
-                                headline,
                                 title,
                                 id: videoUrl.split('v=')[1],
                                 url: videoUrl,
