@@ -274,12 +274,14 @@ const getBasicInformation = async (basicInfoParams) => {
                 log.debug('Videos count', { shouldContinue, videos: videos.length });
 
                 for (const video of videos) {
+                    let headline;
                     let title;
                     try {
                         await video.hover();
                     } catch (e) {}
 
                     if (channelUrl) {
+                        const headline = await video.$eval(title);
                         const videoUrl = await video.$eval(url, (el) => el.href);
                         const videoId = utils.getVideoId(videoUrl);
                         title = await video.$eval(videoTitle, (el) => el.title);
@@ -317,6 +319,7 @@ const getBasicInformation = async (basicInfoParams) => {
                         videoAmount++;
 
                         await extendOutputFunction({
+                            headline,
                             title,
                             id: videoId,
                             url: videoUrl,
