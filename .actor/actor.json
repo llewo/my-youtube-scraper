@@ -46,7 +46,7 @@
                                 "field": "viewCount"
                             },
                             {
-                                "label": "Upload Date",
+                                "label": "Date",
                                 "format": "text",
                                 "field": "duration"
                             },
