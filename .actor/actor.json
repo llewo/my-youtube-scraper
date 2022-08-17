@@ -46,9 +46,9 @@
                                 "field": "viewCount"
                             },
                             {
-                                "label": "Date",
+                                "label": "Upload Date",
                                 "format": "text",
-                                "field": "date"
+                                "field": "duration"
                             },
 //                            {
 //                                "label": "Number of likes",
