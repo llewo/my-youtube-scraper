@@ -53,10 +53,10 @@ exports.handleMaster = async ({ page, requestQueue, searchKeywords, maxResults, 
     const searchOrUrl = search || request.url;
 
     log.debug(`[${searchOrUrl}]: waiting for first video to load...`);
-    const { youtubeVideosSection, youtubeVideosRenderer } = CONSTS.SELECTORS.SEARCH;
+    const { youtubeVideosSection, youtubeVideosHeadline, youtubeVideosRenderer } = CONSTS.SELECTORS.SEARCH;
     // static wait to ensure the page is loaded, networkidle2 sometimes not working?
     await page.waitForTimeout(CONSTS.DELAY.START_LOADING_MORE_VIDEOS);
-    const queuedVideos = await page.$$(`${youtubeVideosSection} ${youtubeVideosRenderer}`);
+    const queuedVideos = await page.$$(`${youtubeVideosSection} ${youtubeVideosHeadline} ${youtubeVideosRenderer}`);
 
     // prepare to infinite scroll manually
     // puppeteer.infiniteScroll(page) is currently buggy
@@ -192,6 +192,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
     }
 
     await extendOutputFunction({
+        headline,
         title,
         id: videoId,
         url: request.url,
@@ -224,7 +225,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 
 const getBasicInformation = async (basicInfoParams) => {
     const { page, maxRequested, isSearchResultPage, input, requestUrl } = basicInfoParams;
-    const { youtubeVideosSection, youtubeVideosRenderer, url, videoTitle, channelNameText, subscriberCount, canonicalUrl,
+    const { youtubeVideosSection, youtubeVideosHeadline, youtubeVideosRenderer, simplifiedResultHeadline, url, videoTitle, channelNameText, subscriberCount, canonicalUrl,
         simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
     } = CONSTS.SELECTORS.SEARCH;
 
