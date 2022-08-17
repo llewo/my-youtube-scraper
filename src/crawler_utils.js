@@ -225,7 +225,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 
 const getBasicInformation = async (basicInfoParams) => {
     const { page, maxRequested, isSearchResultPage, input, requestUrl } = basicInfoParams;
-    const { youtubeVideosSection, youtubeVideosHeadline, youtubeVideosRenderer, simplifiedResultHeadline, url, videoTitle, channelNameText, subscriberCount, canonicalUrl,
+    const { youtubeVideosSection, youtubeVideosHeadline, youtubeVideosRenderer, url, videoTitle, headline, channelNameText, subscriberCount, canonicalUrl, simplifiedResultHeadline, 
         simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
     } = CONSTS.SELECTORS.SEARCH;
 
@@ -280,6 +280,7 @@ const getBasicInformation = async (basicInfoParams) => {
                     } catch (e) {}
 
                     if (channelUrl) {
+                        const headline = await video.$eval(simplifiedResultHeadline);
                         const videoUrl = await video.$eval(url, (el) => el.href);
                         const videoId = utils.getVideoId(videoUrl);
                         title = await video.$eval(videoTitle, (el) => el.title);
@@ -317,6 +318,7 @@ const getBasicInformation = async (basicInfoParams) => {
                         videoAmount++;
 
                         await extendOutputFunction({
+                            headline,
                             title,
                             id: videoId,
                             url: videoUrl,
@@ -337,10 +339,12 @@ const getBasicInformation = async (basicInfoParams) => {
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
+                            const headline = await video.$eval(simplifiedResultHeadline);
 
                             videoAmount++;
 
                             await extendOutputFunction({
+                                headline,
                                 title,
                                 id: videoUrl.split('v=')[1],
                                 url: videoUrl,
