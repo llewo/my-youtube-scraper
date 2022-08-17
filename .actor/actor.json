@@ -16,7 +16,7 @@
                     "transformation": {
                         "fields": [
                             "title",
-                            "id",
+//                            "id",
                             "url",
                             "viewCount",
                             "date",
@@ -24,7 +24,7 @@
                             "channelName",
 //                            "channelUrl",
 //                            "numberOfSubscribers",
-//                            "duration"
+                            "duration"
                         ]
                     },
                     "display": {
