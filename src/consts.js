@@ -26,7 +26,7 @@ exports.SELECTORS = {
         youtubeVideosSection: 'ytd-item-section-renderer',
 //      simplifiedResultHeadline: "//ytd-shelf-renderer/div/div/div/h2/div/a/*[@id='title']",
         youtubeVideosRenderer: 'ytd-video-renderer,ytd-grid-video-renderer', // grid is for channels
-        simplifiedResultHeadline: "//ytd-shelf-renderer/div/div/div/h2/div/a/*[@id='title']",
+        simplifiedResultHeadline: '#video-title',
         url: 'a[href^="/watch"]',
         videoTitle: '#video-title',
         channelNameText: '#channel-name #text-container', // multiple, get first
