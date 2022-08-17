@@ -70,11 +70,11 @@
 //                                "format": "text",
 //                                "field": "numberOfSubscribers"
 //                            },
-                            {
-                                "label": "duration",
-                                "format": "text",
-                                "field": "duration"
-                            }
+//                            {
+//                                "label": "duration",
+//                                "format": "text",
+//                                "field": "duration"
+//                            }
                         ]
                     }
                 }
