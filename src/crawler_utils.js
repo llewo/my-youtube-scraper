@@ -269,7 +269,6 @@ const getBasicInformation = async (basicInfoParams) => {
             for (const videoSection of videoSections) {
                 // each section have around 20 videos
                 await page.waitForSelector(youtubeVideosRenderer);
-                const headline = await video.$eval(simplifiedResultHeadline);
                 const videos = await videoSection.$$(youtubeVideosRenderer);
 
                 log.debug('Videos count', { shouldContinue, videos: videos.length });
