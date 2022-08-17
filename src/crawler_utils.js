@@ -331,6 +331,7 @@ const getBasicInformation = async (basicInfoParams) => {
                         });
                     } else {
                         try {
+                            headline = await video.$eval(simplifiedResultHeadline);
                             title = await video.$eval(simplifiedResultVideoTitle, (el) => el.innerText);
                             const videoUrl = await video.$eval(simplifiedResultVideoTitle, (el) => el.href);
                             const duration = await video.$eval(simplifiedResultDurationText, (el) => el.innerText);
@@ -339,7 +340,6 @@ const getBasicInformation = async (basicInfoParams) => {
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
-                            const headline = await video.$eval(simplifiedResultHeadline);
 
                             videoAmount++;
 
