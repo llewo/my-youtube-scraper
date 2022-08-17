@@ -226,7 +226,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 const getBasicInformation = async (basicInfoParams) => {
     const { page, maxRequested, isSearchResultPage, input, requestUrl } = basicInfoParams;
     const { youtubeVideosSection, youtubeVideosRenderer, url, videoTitle, channelNameText, subscriberCount, canonicalUrl,
-        simlifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
+        simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
     } = CONSTS.SELECTORS.SEARCH;
 
     const extendOutputFunction = await utils.extendFunction({
@@ -318,7 +318,7 @@ const getBasicInformation = async (basicInfoParams) => {
                             const videoUrl = await video.$eval(simplifiedResultVideoTitle, (el) => el.href);
                             const duration = await video.$eval(simplifiedResultDurationText, (el) => el.innerText);
                             const channelName = await video.$eval(simplifiedResultChannelName, (el) => el.innerText);
-                            const channelUrl = await video.$eval(simlifiedResultChannelUrl, (el) => el.href);
+                            const channelUrl = await video.$eval(simplifiedResultChannelUrl, (el) => el.href);
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
