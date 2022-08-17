@@ -226,7 +226,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 const getBasicInformation = async (basicInfoParams) => {
     const { page, maxRequested, isSearchResultPage, input, requestUrl } = basicInfoParams;
     const { youtubeVideosSection, youtubeVideosHeadline, youtubeVideosRenderer, simplifiedResultHeadline, url, videoTitle, channelNameText, subscriberCount, canonicalUrl,
-        simplifiedResultHeadline, simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
+        simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
     } = CONSTS.SELECTORS.SEARCH;
 
     const extendOutputFunction = await utils.extendFunction({
