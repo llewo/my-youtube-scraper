@@ -25,7 +25,7 @@ exports.SELECTORS = {
         filterBtnsXp: '//ytd-search-filter-renderer/a/div/yt-formatted-string',
         youtubeVideosSection: 'ytd-item-section-renderer',
         youtubeVideosHeadline: 'ytd-shelf-renderer',
-        simplifiedResultHeadline: '#title.ytd-shelf-renderer',
+        simplifiedResultHeadline: '#title-container.ytd-shelf-renderer',
         youtubeVideosRenderer: 'ytd-video-renderer,ytd-grid-video-renderer', // grid is for channels
         url: 'a[href^="/watch"]',
         videoTitle: '#video-title',
