@@ -8,14 +8,13 @@
         "dataset": {
             "actorSpecification": 1,
             "title": "Youtube Scraper",
-            "description": "To see all scraped properties, export the whole dataset or select All fields instead of Overview",
+            "description": "Too see all scraped properties, export the whole dataset or select All fields instead of Overview",
             "views": {
                 "overview": {
                     "title": "Overview",
                     "description": "",
                     "transformation": {
                         "fields": [
-                            "headline",
                             "title",
                             "id",
                             "url",
@@ -31,11 +30,6 @@
                     "display": {
                         "component": "table",
                         "columns": [
-                            {
-                                "label": "Headline",
-                                "format": "text",
-                                "field": "headline"
-                            },
                             {
                                 "label": "Title",
                                 "format": "text",
