@@ -50,11 +50,11 @@
                                 "format": "text",
                                 "field": "date"
                             },
-                            {
-                                "label": "Number of likes",
-                                "format": "text",
-                                "field": "likes"
-                            },
+//                            {
+//                                "label": "Number of likes",
+//                                "format": "text",
+//                                "field": "likes"
+//                            },
                             {
                                 "label": "Channel name",
                                 "format": "text",
@@ -65,11 +65,11 @@
                                 "format": "text",
                                 "field": "channelUrl"
                             },
-                            {
-                                "label": "Number of subscribers",
-                                "format": "text",
-                                "field": "numberOfSubscribers"
-                            },
+//                            {
+//                                "label": "Number of subscribers",
+//                                "format": "text",
+//                                "field": "numberOfSubscribers"
+//                            },
                             {
                                 "label": "duration",
                                 "format": "text",
