@@ -56,14 +56,14 @@
 //                                "field": "likes"
 //                            },
                             {
-                                "label": "Channel name",
+                                "label": "Source",
                                 "format": "text",
-                                "field": "channelName"
+                                "field": "date"
                             },
                             {
-                                "label": "Channel URL",
+                                "label": "Category",
                                 "format": "text",
-                                "field": "channelUrl"
+                                "field": "channelName"
                             },
 //                            {
 //                                "label": "Number of subscribers",
