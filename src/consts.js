@@ -33,7 +33,7 @@ exports.SELECTORS = {
         simplifiedResultVideoTitle: '#video-title',
         simplifiedResultDurationText: '#text',
         simplifiedResultChannelName: '#channel-info > #channel-name',
-        simlifiedResultChannelUrl: '#channel-info > a',
+        simplifiedResultChannelUrl: '#channel-info > a',
         simplifiedResultViewCount: '#metadata-line > span:nth-child(1)',
         simplifiedResultDate: '#metadata-line > span:nth-child(2)',
     },
