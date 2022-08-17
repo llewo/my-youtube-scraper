@@ -20,10 +20,10 @@
                             "url",
                             "viewCount",
                             "date",
-                            "likes",
+                            //   "likes",
                             "channelName",
                             "channelUrl",
-                            "numberOfSubscribers",
+                            //   "numberOfSubscribers",
                             "duration"
                         ]
                     },
