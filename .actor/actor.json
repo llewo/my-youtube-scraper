@@ -15,6 +15,7 @@
                     "description": "",
                     "transformation": {
                         "fields": [
+                            "headline",
                             "title",
                             "id",
                             "url",
@@ -30,6 +31,11 @@
                     "display": {
                         "component": "table",
                         "columns": [
+                            {
+                                "label": "Headline",
+                                "format": "text",
+                                "field": "headline"
+                            },
                             {
                                 "label": "Title",
                                 "format": "text",
