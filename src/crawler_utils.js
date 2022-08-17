@@ -226,7 +226,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 const getBasicInformation = async (basicInfoParams) => {
     const { page, maxRequested, isSearchResultPage, input, requestUrl } = basicInfoParams;
     const { youtubeVideosSection, youtubeVideosHeadline, youtubeVideosRenderer, simplifiedResultHeadline, url, videoTitle, channelNameText, subscriberCount, canonicalUrl,
-        simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
+        simplifiedResultHeadline, simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
     } = CONSTS.SELECTORS.SEARCH;
 
     const extendOutputFunction = await utils.extendFunction({
@@ -269,19 +269,18 @@ const getBasicInformation = async (basicInfoParams) => {
             for (const videoSection of videoSections) {
                 // each section have around 20 videos
                 await page.waitForSelector(youtubeVideosRenderer);
+                const headline = await video.$eval(simplifiedResultHeadline);
                 const videos = await videoSection.$$(youtubeVideosRenderer);
 
                 log.debug('Videos count', { shouldContinue, videos: videos.length });
 
                 for (const video of videos) {
-                    let headline;
                     let title;
                     try {
                         await video.hover();
                     } catch (e) {}
 
                     if (channelUrl) {
-                        const headline = await video.$eval(title);
                         const videoUrl = await video.$eval(url, (el) => el.href);
                         const videoId = utils.getVideoId(videoUrl);
                         title = await video.$eval(videoTitle, (el) => el.title);
