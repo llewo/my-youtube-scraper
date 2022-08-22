@@ -325,7 +325,7 @@ const getBasicInformation = async (basicInfoParams) => {
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
-                            const headline = simplifiedResultDate;
+                            const headline = simplifiedResultHeadline;
 
                             videoAmount++;
 
