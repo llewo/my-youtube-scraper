@@ -303,6 +303,7 @@ const getBasicInformation = async (basicInfoParams) => {
 
                         await extendOutputFunction({
                             title,
+                            headline,
                             id: videoId,
                             url: videoUrl,
                             viewCount,
