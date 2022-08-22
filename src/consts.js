@@ -24,6 +24,7 @@ exports.SELECTORS = {
         toggleFilterMenu: '#button[aria-label="Search filters"]',
         filterBtnsXp: '//ytd-search-filter-renderer/a/div/yt-formatted-string',
         youtubeVideosSection: 'ytd-item-section-renderer',
+        simplifiedResultHeadline: 'ytd-shelf-renderer > #title > #runs > #text',
         youtubeVideosRenderer: 'ytd-video-renderer,ytd-grid-video-renderer', // grid is for channels
         url: 'a[href^="/watch"]',
         videoTitle: '#video-title',
@@ -36,7 +37,6 @@ exports.SELECTORS = {
         simplifiedResultChannelUrl: '#channel-info > a',
         simplifiedResultViewCount: '#metadata-line > span:nth-child(1)',
         simplifiedResultDate: '#metadata-line > span:nth-child(2)',
-        simplifiedResultHeadline: 'ytd-shelf-renderer > #title > #run > #text',
     },
     VIDEO: {
         titleXp: '//ytd-video-primary-info-renderer/div/h1/yt-formatted-string',
