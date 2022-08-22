@@ -290,7 +290,7 @@ const getBasicInformation = async (basicInfoParams) => {
                         const simplifiedDate = videoDetailsArray.slice(0, 3).join(' ');
                         const viewCount = +videoDetailsArray[videoDetailsArray.length - 2].replace(/\D/g, '');
                         const durationRaw = videoDetailsArray.slice(3, videoDetailsArray.length - 2).join(' ');
-                        const headline = simplifiedResultHeadline;
+                        const headline = await video.$eval(simplifiedResultHeadline, (el) => el.title);
 
                         let duration;
 
@@ -325,7 +325,7 @@ const getBasicInformation = async (basicInfoParams) => {
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
-                            const headline = simplifiedResultHeadline;
+                            const headline = await video.$eval(simplifiedResultHeadline, (el) => el.innerText);
 
                             videoAmount++;
 
