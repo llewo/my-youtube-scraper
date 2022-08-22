@@ -194,6 +194,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 
     await extendOutputFunction({
         title,
+        headline,
         id: videoId,
         url: request.url,
         viewCount,
@@ -289,6 +290,7 @@ const getBasicInformation = async (basicInfoParams) => {
                         const simplifiedDate = videoDetailsArray.slice(0, 3).join(' ');
                         const viewCount = +videoDetailsArray[videoDetailsArray.length - 2].replace(/\D/g, '');
                         const durationRaw = videoDetailsArray.slice(3, videoDetailsArray.length - 2).join(' ');
+                        const headline = simplifiedResultHeadline;
 
                         let duration;
 
