@@ -17,6 +17,7 @@
                         "fields": [
                             "title",
 //                            "id",
+                            "headline",
                             "url",
                             "viewCount",
                             "date",
@@ -34,6 +35,11 @@
                                 "label": "Title",
                                 "format": "text",
                                 "field": "title"
+                            },
+                                                        {
+                                "label": "Headline",
+                                "format": "text",
+                                "field": "headline"
                             },
                             {
                                 "label": "URL",
