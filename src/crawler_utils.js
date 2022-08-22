@@ -263,8 +263,6 @@ const getBasicInformation = async (basicInfoParams) => {
             // youtube keep adding video sections to the page on scroll
             await page.waitForSelector(youtubeVideosSection);
             const videoSections = await page.$$(youtubeVideosSection);
-            const headline = await video.$eval(simplifiedResultHeadline, (el) => el.title);
-
 
             log.debug('Video sections', { shouldContinue, videoSections: videoSections.length });
             let videoCount = 0;
@@ -272,6 +270,7 @@ const getBasicInformation = async (basicInfoParams) => {
             for (const videoSection of videoSections) {
                 // each section have around 20 videos
                 await page.waitForSelector(youtubeVideosRenderer);
+                const headline = await videoSection.$eval(simplifiedResultHeadline, (el) => el.title);
                 const videos = await videoSection.$$(youtubeVideosRenderer);
 
                 log.debug('Videos count', { shouldContinue, videos: videos.length });
