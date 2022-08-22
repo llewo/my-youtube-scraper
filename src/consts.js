@@ -36,6 +36,7 @@ exports.SELECTORS = {
         simplifiedResultChannelUrl: '#channel-info > a',
         simplifiedResultViewCount: '#metadata-line > span:nth-child(1)',
         simplifiedResultDate: '#metadata-line > span:nth-child(2)',
+        simplifiedResultHeadline: 'ytd-shelf-renderer > #title > #run > #text',
     },
     VIDEO: {
         titleXp: '//ytd-video-primary-info-renderer/div/h1/yt-formatted-string',
