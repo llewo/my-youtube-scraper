@@ -24,7 +24,7 @@ exports.SELECTORS = {
         toggleFilterMenu: '#button[aria-label="Search filters"]',
         filterBtnsXp: '//ytd-search-filter-renderer/a/div/yt-formatted-string',
         youtubeVideosSection: 'ytd-item-section-renderer',
-        youtubeResultsSection: 'ytd-shelf-renderer,ytd-simple-endpoint',
+        youtubeShelfSection: 'ytd-shelf-renderer,ytd-simple-endpoint',
         simplifiedResultHeadline: '#title',
         youtubeVideosRenderer: 'ytd-video-renderer,ytd-grid-video-renderer', // grid is for channels
         url: 'a[href^="/watch"]',
