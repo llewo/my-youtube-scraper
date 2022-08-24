@@ -288,14 +288,18 @@ const getBasicInformation = async (basicInfoParams) => {
                         const videoDetails = await video.$eval(videoTitle, (el) => el.ariaLabel) || '';
 
                         const videoDetailsArray = videoDetails.replace(title, ``).replace(`by ${channelName}`, ``).split(' ').filter((item) => item);
-                        const simplifiedDate = videoDetailsArray.slice(0, 3).join(' ');
+                        let simplifiedDate = videoDetailsArray.slice(0, videoDetailsArray.indexOf('ago') + 1)
+                            .slice(-3).join(' ');
                         const viewCount = +videoDetailsArray[videoDetailsArray.length - 2].replace(/\D/g, '');
-                        const durationRaw = videoDetailsArray.slice(3, videoDetailsArray.length - 2).join(' ');
+                        let durationRaw = videoDetailsArray.slice(6, videoDetailsArray.length - 2).join(' ');
 
                         let duration;
 
                         try {
-                            duration = await video.$eval(`span[aria-label="${durationRaw}"]`, (el) => el.innerText);
+                                console.log(`Trying to parse alternative duration`);
+                                durationRaw = videoDetailsArray.slice(videoDetailsArray.indexOf('ago') + 1, -2).join(' ');
+                            
+                                duration = await video.$eval(`span[aria-label="${durationRaw}"]`, (el) => el.innerText);                            
                         } catch (e) {
                             console.log(`Couldn't parse duration, sending the raw duration`);
                             duration = durationRaw;
