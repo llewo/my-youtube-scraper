@@ -33,32 +33,32 @@
                         "component": "table",
                         "columns": [
                             {
-                                "label": "Title",
+                                "label": "01-Title",
                                 "format": "text",
                                 "field": "title"
                             },
                                                         {
-                                "label": "Headline",
+                                "label": "02-Headline",
                                 "format": "text",
                                 "field": "headline"
                             },
                             {
-                                "label": "URL",
+                                "label": "03-URL",
                                 "format": "text",
                                 "field": "url"
                             },
                             {
-                                "label": "Number of views",
+                                "label": "04-Number of views",
                                 "format": "text",
                                 "field": "viewCount"
                             },
                             {
-                                "label": "Source",
+                                "label": "05-Source",
                                 "format": "text",
                                 "field": "source"
                             },
                             {
-                                "label": "Duration",
+                                "label": "06-Duration",
                                 "format": "text",
                                 "field": "duration"
                             },
@@ -68,12 +68,12 @@
 //                                "field": "likes"
 //                            },
                             {
-                                "label": "Date",
+                                "label": "07-Date",
                                 "format": "text",
                                 "field": "date"
                             },
                             {
-                                "label": "Category",
+                                "label": "08-Category",
                                 "format": "text",
                                 "field": "channelName"
                             },
