@@ -21,6 +21,7 @@
                             "url",
                             "viewCount",
                             "date",
+                            "source",
 //                            "likes",
                             "channelName",
 //                            "channelUrl",
@@ -52,7 +53,12 @@
                                 "field": "viewCount"
                             },
                             {
-                                "label": "Date",
+                                "label": "Source",
+                                "format": "text",
+                                "field": "source"
+                            },
+                            {
+                                "label": "Duration",
                                 "format": "text",
                                 "field": "duration"
                             },
@@ -62,7 +68,7 @@
 //                                "field": "likes"
 //                            },
                             {
-                                "label": "Source",
+                                "label": "Date",
                                 "format": "text",
                                 "field": "date"
                             },
