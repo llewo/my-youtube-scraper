@@ -226,7 +226,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 
 const getBasicInformation = async (basicInfoParams) => {
     const { page, maxRequested, isSearchResultPage, input, requestUrl } = basicInfoParams;
-    const { youtubeVideosSection, youtubeVideosRenderer, url, videoTitle, channelNameText, subscriberCount, canonicalUrl, simplifiedResultHeadline,
+    const { youtubeVideosSection, youtubeVideosRenderer, url, videoTitle, channelNameText, subscriberCount, canonicalUrl, simplifiedResultHeadline, simplifiedSource,
         simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
     } = CONSTS.SELECTORS.SEARCH;
 
@@ -285,6 +285,7 @@ const getBasicInformation = async (basicInfoParams) => {
                         const videoUrl = await video.$eval(url, (el) => el.href);
                         const videoId = utils.getVideoId(videoUrl);
                         title = await video.$eval(videoTitle, (el) => el.title);
+                        const simplifiedSource = videoDetailsArray.slice(0, 3).join(' ');
                         const videoDetails = await video.$eval(videoTitle, (el) => el.ariaLabel) || '';
 
                         const videoDetailsArray = videoDetails.replace(title, ``).replace(`by ${channelName}`, ``).split(' ').filter((item) => item);
