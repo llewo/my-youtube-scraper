@@ -199,6 +199,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
         url: request.url,
         viewCount,
         date: uploadDate,
+        source,
         likes: likesCount,
         dislikes: null,
         channelName,
