@@ -315,6 +315,7 @@ const getBasicInformation = async (basicInfoParams) => {
                             url: videoUrl,
                             viewCount,
                             date: simplifiedDate,
+                            source: simplifiedSource,
                             channelName,
                             channelUrl,
                             numberOfSubscribers,
@@ -329,6 +330,7 @@ const getBasicInformation = async (basicInfoParams) => {
                             const channelUrl = await video.$eval(simplifiedResultChannelUrl, (el) => el.href);
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
+                            const source = await video.$eval(simplifiedSource, (el) => el.innerText);
                             const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
                             const headline = await video.$eval(simplifiedResultHeadline, (el) => el.innerText);
 
@@ -341,6 +343,7 @@ const getBasicInformation = async (basicInfoParams) => {
                                 url: videoUrl,
                                 viewCount,
                                 date,
+                                source,
                                 channelName,
                                 channelUrl,
                                 duration,
