@@ -292,7 +292,7 @@ const getBasicInformation = async (basicInfoParams) => {
                         let simplifiedDate = videoDetailsArray.slice(0, videoDetailsArray.indexOf('ago') + 1)
                             .slice(-3).join(' ');
                         const simplifiedSourceRaw = videoDetailsArray.slice(0, 3).join(' ');
-                        const simplifiedSource = simplifiedSourceRaw.substring(4,simplifiedSourceRaw.length);
+                        const simplifiedSource = simplifiedSourceRaw.substring(3,simplifiedSourceRaw.length);
                         const viewCount = +videoDetailsArray[videoDetailsArray.length - 2].replace(/\D/g, '');
                         let durationRaw = videoDetailsArray.slice(6, videoDetailsArray.length - 2).join(' ');
 
