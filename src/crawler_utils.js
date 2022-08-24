@@ -286,12 +286,12 @@ const getBasicInformation = async (basicInfoParams) => {
                         const videoUrl = await video.$eval(url, (el) => el.href);
                         const videoId = utils.getVideoId(videoUrl);
                         title = await video.$eval(videoTitle, (el) => el.title);
-                        const simplifiedSource = videoDetailsArray.slice(0, 3).join(' ');
                         const videoDetails = await video.$eval(videoTitle, (el) => el.ariaLabel) || '';
 
                         const videoDetailsArray = videoDetails.replace(title, ``).replace(`by ${channelName}`, ``).split(' ').filter((item) => item);
                         let simplifiedDate = videoDetailsArray.slice(0, videoDetailsArray.indexOf('ago') + 1)
                             .slice(-3).join(' ');
+                        const simplifiedSource = videoDetailsArray.slice(0, 3).join(' ');
                         const viewCount = +videoDetailsArray[videoDetailsArray.length - 2].replace(/\D/g, '');
                         let durationRaw = videoDetailsArray.slice(6, videoDetailsArray.length - 2).join(' ');
 
