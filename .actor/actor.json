@@ -37,20 +37,15 @@
                                 "format": "text",
                                 "field": "title"
                             },
-                                                        {
-                                "label": "03-Headline",
-                                "format": "text",
-                                "field": "headline"
-                            },
                             {
                                 "label": "02-URL",
                                 "format": "text",
                                 "field": "url"
                             },
-                            {
-                                "label": "06-Number of views",
+                                                        {
+                                "label": "03-Headline",
                                 "format": "text",
-                                "field": "viewCount"
+                                "field": "headline"
                             },
                             {
                                 "label": "04-Source",
@@ -58,25 +53,31 @@
                                 "field": "source"
                             },
                             {
-                                "label": "07-Duration",
-                                "format": "text",
-                                "field": "duration"
-                            },
-//                            {
-//                                "label": "Number of likes",
-//                                "format": "text",
-//                                "field": "likes"
-//                            },
-                            {
                                 "label": "05-Date",
                                 "format": "text",
                                 "field": "date"
+                            },
+                            {
+                                "label": "06-Number of views",
+                                "format": "text",
+                                "field": "viewCount"
+                            },
+                            {
+                                "label": "07-Duration",
+                                "format": "text",
+                                "field": "duration"
                             },
                             {
                                 "label": "08-Category",
                                 "format": "text",
                                 "field": "channelName"
                             },
+//                            {
+//                                "label": "Number of likes",
+//                                "format": "text",
+//                                "field": "likes"
+//                            },
+
 //                            {
 //                                "label": "Number of subscribers",
 //                                "format": "text",
