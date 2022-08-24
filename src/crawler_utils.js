@@ -227,7 +227,7 @@ exports.handleDetail = async (page, request, extendOutputFunction, subtitlesSett
 
 const getBasicInformation = async (basicInfoParams) => {
     const { page, maxRequested, isSearchResultPage, input, requestUrl } = basicInfoParams;
-    const { youtubeVideosSection, youtubeVideosRenderer, url, videoTitle, channelNameText, subscriberCount, canonicalUrl, simplifiedResultHeadline, simplifiedSource,
+    const { youtubeVideosSection, youtubeVideosRenderer, url, videoTitle, channelNameText, subscriberCount, canonicalUrl, simplifiedResultHeadline, simplifiedSourceRaw, simplifiedSource,
         simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle, simplifiedResultViewCount,
     } = CONSTS.SELECTORS.SEARCH;
 
@@ -291,7 +291,8 @@ const getBasicInformation = async (basicInfoParams) => {
                         const videoDetailsArray = videoDetails.replace(title, ``).replace(`by ${channelName}`, ``).split(' ').filter((item) => item);
                         let simplifiedDate = videoDetailsArray.slice(0, videoDetailsArray.indexOf('ago') + 1)
                             .slice(-3).join(' ');
-                        const simplifiedSource = videoDetailsArray.slice(0, 3).join(' ');
+                        const simplifiedSourceRaw = videoDetailsArray.slice(0, 3).join(' ');
+                        const simplifiedSource = simplifiedSourceRaw.substring(4,simplifiedSourceRaw.length);
                         const viewCount = +videoDetailsArray[videoDetailsArray.length - 2].replace(/\D/g, '');
                         let durationRaw = videoDetailsArray.slice(6, videoDetailsArray.length - 2).join(' ');
 
