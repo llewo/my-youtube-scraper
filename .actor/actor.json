@@ -38,27 +38,27 @@
                                 "field": "title"
                             },
                                                         {
-                                "label": "02-Headline",
+                                "label": "03-Headline",
                                 "format": "text",
                                 "field": "headline"
                             },
                             {
-                                "label": "03-URL",
+                                "label": "02-URL",
                                 "format": "text",
                                 "field": "url"
                             },
                             {
-                                "label": "04-Number of views",
+                                "label": "06-Number of views",
                                 "format": "text",
                                 "field": "viewCount"
                             },
                             {
-                                "label": "05-Source",
+                                "label": "04-Source",
                                 "format": "text",
                                 "field": "source"
                             },
                             {
-                                "label": "06-Duration",
+                                "label": "07-Duration",
                                 "format": "text",
                                 "field": "duration"
                             },
@@ -68,7 +68,7 @@
 //                                "field": "likes"
 //                            },
                             {
-                                "label": "07-Date",
+                                "label": "05-Date",
                                 "format": "text",
                                 "field": "date"
                             },
