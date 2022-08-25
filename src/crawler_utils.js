@@ -318,13 +318,13 @@ const getBasicInformation = async (basicInfoParams) => {
                         await extendOutputFunction({
                             title,
                             headline,
-                            id: videoId,
+//                            id: videoId,
                             url: videoUrl,
-                            viewCount,
-                            date: simplifiedDate,
                             source: simplifiedSource,
-                            channelName,
+                            date: timeStamp,
+                            viewCount,
                             duration,
+                            channelName,
 //                            channelUrl,
 //                            numberOfSubscribers,
                         });
