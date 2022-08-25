@@ -230,7 +230,7 @@ const getBasicInformation = async (basicInfoParams) => {
     const { youtubeVideosSection, youtubeVideosRenderer, url, videoTitle, channelNameText, subscriberCount, canonicalUrl, simplifiedResultHeadline,
         simplifiedResultChannelUrl, simplifiedResultChannelName, simplifiedResultDate, simplifiedResultDurationText, simplifiedResultVideoTitle,
         simplifiedResultViewCount, simplifiedSourceRaw, simplifiedSource,
-          } = CONSTS.SELECTORS.SEARCH;
+    } = CONSTS.SELECTORS.SEARCH;
 
     const extendOutputFunction = await utils.extendFunction({
         input,
@@ -299,6 +299,10 @@ const getBasicInformation = async (basicInfoParams) => {
 
                         let duration;
 
+                        const timeValue = simplifiedDate.split(' ')[0];
+                        const timeUnit = simplifiedDate.split(' ')[1];
+                        const timeStamp = moment().subtract(timeValue, timeUnit).unix();
+                        
                         try {
                             console.log(`Trying to parse alternative duration`);
                             durationRaw = videoDetailsArray.slice(videoDetailsArray.indexOf('ago') + 1, -2).join(' ');
@@ -320,9 +324,9 @@ const getBasicInformation = async (basicInfoParams) => {
                             date: simplifiedDate,
                             source: simplifiedSource,
                             channelName,
-                            channelUrl,
-                            numberOfSubscribers,
                             duration,
+//                            channelUrl,
+//                            numberOfSubscribers,
                         });
                     } else {
                         try {
@@ -334,22 +338,26 @@ const getBasicInformation = async (basicInfoParams) => {
                             const viewCountRaw = await video.$eval(simplifiedResultViewCount, (el) => el.innerText);
                             const viewCount = unformatNumbers(viewCountRaw);
                             const source = await video.$eval(simplifiedSource, (el) => el.innerText);
-                            const date = await video.$eval(simplifiedResultDate, (el) => el.innerText);
+                            const simplifiedDate = await video.$eval(simplifiedResultDate, (el) => el.innerText);
                             const headline = await video.$eval(simplifiedResultHeadline, (el) => el.innerText);
 
                             videoAmount++;
+                            
+                            const timeValue = simplifiedDate.split(' ')[0];
+                            const timeUnit = simplifiedDate.split(' ')[1];
+                            const timeStamp = moment().subtract(timeValue, timeUnit).unix();
 
                             await extendOutputFunction({
                                 title,
-                                headline,
-                                id: videoUrl.split('v=')[1],
+                                // id: videoUrl.split('v=')[1],
                                 url: videoUrl,
-                                viewCount,
-                                date,
+                                headline,
                                 source,
-                                channelName,
-                                channelUrl,
+                                date: timeStamp,
+                                viewCount,
                                 duration,
+                                channelName,
+                                // channelUrl,
                             });
                         } catch (e) {
                             log.warning(e);
