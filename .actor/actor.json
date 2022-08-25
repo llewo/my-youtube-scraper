@@ -16,17 +16,17 @@
                     "transformation": {
                         "fields": [
                             "title",
-//                            "id",
-                            "headline",
                             "url",
-                            "viewCount",
-                            "date",
+                            "headline",
                             "source",
-//                            "likes",
-                            "channelName",
+                            "date",
+                            "viewCount",
+                            "duration",
+                            "channelName", 
+//                            "id",
+//                            "likes",                            
 //                            "channelUrl",
-//                            "numberOfSubscribers",
-                            "duration"
+//                            "numberOfSubscribers",                            
                         ]
                     },
                     "display": {
